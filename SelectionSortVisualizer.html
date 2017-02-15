@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selection Sort Visualizer</title>
+</head>
+<body>
+
+<canvas id="myCanvas" width="800" height="300" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+
+    var swap = function (array, firstIndex, secondIndex) {
+        var temp = array[firstIndex];
+        array[firstIndex] = array[secondIndex];
+        array[secondIndex] = temp;
+    };
+
+    var indexOfMinimum = function (array, startIndex) {
+
+        var minValue = array[startIndex];
+        var minIndex = startIndex;
+
+        for (var i = minIndex + 1; i < array.length; i++) {
+            if (array[i] < minValue) {
+                minIndex = i;
+                minValue = array[i];
+            }
+        }
+        return minIndex;
+    };
+
+    var selectionSort = function (array) {
+        var test;
+        var height = 30;
+        var width = 30;
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fillText(array, width, height);
+
+
+        for (var i = 0; i < array.length; i++) {
+            test = indexOfMinimum(array, i);
+            swap(array, i, test);
+            height += 50;
+            ctx.fillText(array, width, height);
+        }
+
+        // draw first line
+        ctx.moveTo(205, 40);
+        ctx.lineTo(35, 55);
+        ctx.stroke();
+        // draw second line
+        ctx.moveTo(70, 85);
+        ctx.lineTo(70, 105);
+        ctx.stroke();
+        //draw third line
+        ctx.moveTo(195, 140);
+        ctx.lineTo(115, 160);
+        ctx.stroke();
+
+    };
+
+    var selectionSort2 = function (array) {
+        var test;
+        var height = 30;
+        var width = 300;
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fillText(array, width, height);
+
+
+        for (var i = 0; i < array.length; i++) {
+            test = indexOfMinimum(array, i);
+            swap(array, i, test);
+            height += 50;
+            ctx.fillText(array, width, height);
+        }
+
+        // draw first line
+        ctx.moveTo(425, 140);
+        ctx.lineTo(395, 155);
+        ctx.stroke();
+        // draw next line
+        ctx.moveTo(475, 185);
+        ctx.lineTo(425, 205);
+        ctx.stroke();
+
+    };
+
+    var selectionSort3 = function (array) {
+        var test;
+        var height = 30;
+        var width = 600;
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fillText(array, width, height);
+
+
+        for (var i = 0; i < array.length; i++) {
+            test = indexOfMinimum(array, i);
+            swap(array, i, test);
+            height += 50;
+            ctx.fillText(array, width, height);
+        }
+
+        // draw first line
+        ctx.moveTo(760, 185);
+        ctx.lineTo(730, 205);
+        ctx.stroke();
+
+    };
+
+    var array = [22, 11, 99, 88, 9];
+    var array2 = [9, 11,99, 11, 22];
+    var array3 = [9, 11, 22, 99, 88];
+
+    selectionSort(array);
+    selectionSort2(array2);
+    selectionSort3(array3);
+
+</script>
+
+
+</body>
+</html>

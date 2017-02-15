@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selection Sort Visualizer</title>
+</head>
+<body>
+
+<canvas id="myCanvas" width="1100" height="300" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+    var swap = function (array, firstIndex, secondIndex) {
+        var temp = array[firstIndex];
+        array[firstIndex] = array[secondIndex];
+        array[secondIndex] = temp;
+    };
+
+    var indexOfMinimum = function (array, startIndex) {
+
+        var minValue = array[startIndex];
+        var minIndex = startIndex;
+
+        for (var i = minIndex + 1; i < array.length; i++) {
+            if (array[i] < minValue) {
+                minIndex = i;
+                minValue = array[i];
+            }
+        }
+        return minIndex;
+    };
+
+    var height = 30;
+    var width = 30;
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.font = "30px Arial";
+
+    var selectionSort = function (array, ctx, height, width) {
+        var test;
+
+        ctx.fillText(array, width, height);
+
+
+        for (var i = 0; i < array.length; i++) {
+            test = indexOfMinimum(array, i);
+            swap(array, i, test);
+            height += 50;
+            ctx.fillText(array, width, height);
+        }
+
+    };
+
+    var array = [22, 11, 99, 88, 9];
+    var array2 = [9, 11,99, 11, 22];
+    var array3 = [9, 11, 22, 99, 88];
+    var array4 = [99, 88, 22, 11, 9];
+
+    selectionSort(array, ctx, height, width);
+    // draw lines for array
+    ctx.moveTo(205, 40);
+    ctx.lineTo(35, 55);
+    ctx.stroke();
+    ctx.moveTo(70, 85);
+    ctx.lineTo(70, 105);
+    ctx.stroke();
+    ctx.moveTo(195, 140);
+    ctx.lineTo(115, 160);
+    ctx.stroke();
+    ctx.moveTo(155, 185);
+    ctx.lineTo(155, 210);
+    ctx.stroke();
+    ctx.moveTo(195, 235);
+    ctx.lineTo(195, 255);
+    ctx.stroke();
+    //change width and height for next array
+    height = 30;
+    width = 300;
+    selectionSort(array2, ctx, height, width);
+    // draw line one for array2
+    ctx.moveTo(310, 40);
+    ctx.lineTo(310, 55);
+    ctx.stroke();
+    ctx.moveTo(340, 85);
+    ctx.lineTo(340, 105);
+    ctx.stroke();
+    ctx.moveTo(425, 140);
+    ctx.lineTo(395, 155);
+    ctx.stroke();
+    ctx.moveTo(475, 185);
+    ctx.lineTo(425, 205);
+    ctx.stroke();
+    ctx.moveTo(425, 235);
+    ctx.lineTo(425, 255);
+    ctx.stroke();
+    height = 30;
+    width = 600;
+    selectionSort(array3, ctx, height, width);
+    // draw line for array3
+    ctx.moveTo(610, 40);
+    ctx.lineTo(610, 55);
+    ctx.stroke();
+    ctx.moveTo(640, 85);
+    ctx.lineTo(640, 105);
+    ctx.stroke();
+    ctx.moveTo(685, 135);
+    ctx.lineTo(685, 155);
+    ctx.stroke();
+    ctx.moveTo(760, 185);
+    ctx.lineTo(730, 205);
+    ctx.stroke();
+    ctx.moveTo(765, 235);
+    ctx.lineTo(765, 255);
+    ctx.stroke();
+    height = 30;
+    width = 900;
+    selectionSort(array4, ctx, height, width);
+    //draw line one for array4
+    ctx.moveTo(1075, 35);
+    ctx.lineTo(905, 55);
+    ctx.stroke();
+    ctx.moveTo(1025, 85);
+    ctx.lineTo(940, 105);
+    ctx.stroke();
+    ctx.moveTo(985, 135);
+    ctx.lineTo(985, 155);
+    ctx.stroke();
+    ctx.moveTo(1025, 185);
+    ctx.lineTo(1025, 210);
+    ctx.stroke();
+    ctx.moveTo(1070, 235);
+    ctx.lineTo(1070, 255);
+    ctx.stroke();
+
+</script>
+
+</body>
+</html>
